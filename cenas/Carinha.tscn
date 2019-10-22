@@ -1,0 +1,123 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Scripts/Carinha.gd" type="Script" id=1]
+[ext_resource path="res://cenas/revolver.gd" type="Script" id=2]
+[ext_resource path="res://img/armas/Espigarda cano curto cima.png" type="Texture" id=3]
+[ext_resource path="res://img/sprites/shotRed.png" type="Texture" id=4]
+[ext_resource path="res://img/armas/revolver ouro.png" type="Texture" id=5]
+[ext_resource path="res://img/sprites/shotLarge.png" type="Texture" id=6]
+[ext_resource path="res://img/sprites/shotOrange.png" type="Texture" id=7]
+[ext_resource path="res://img/Chapel de cima.png" type="Texture" id=8]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 35.9235
+height = 38.2327
+
+[sub_resource type="Animation" id=2]
+length = 1.8
+step = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("fire:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 4 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("fire:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 20.2535, -96.6446 ), Vector2( 19.8964, -99.8184 ), Vector2( 20.1472, -103.511 ), Vector2( 20.0958, -110.148 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("fire:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.993357, 1.13037 ), Vector2( 1.10068, 1.13803 ), Vector2( 0.497647, 0.759588 ), Vector2( 0.253657, 0.393091 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("fire:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.2, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="Carinha" type="KinematicBody2D"]
+position = Vector2( 0, 63.1044 )
+rotation = -0.940124
+collision_layer = 6
+script = ExtResource( 1 )
+arma = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -3.21437, 10.6427 )
+rotation = -1.5708
+shape = SubResource( 1 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
+position = Vector2( -9.43756, 6.95259 )
+rotation = -1.5708
+polygon = PoolVector2Array( -20.8148, -36.8672, 22.2516, -36.8672, 28.9415, -0.490723, 20, 50, -25.4141, 49.2656, -35.449, -2.16321 )
+
+[node name="revolver" type="Node2D" parent="."]
+position = Vector2( 8.67912, 19.245 )
+rotation = 1.5708
+script = ExtResource( 2 )
+
+[node name="Espigarda cano curto cima" type="Sprite" parent="revolver"]
+visible = false
+position = Vector2( 18.7461, -37.8655 )
+rotation = -1.5708
+scale = Vector2( 0.046713, 0.046713 )
+texture = ExtResource( 3 )
+
+[node name="fire" type="Sprite" parent="revolver"]
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 20.0958, -110.148 )
+rotation = 3.14159
+scale = Vector2( 0.253657, 0.393091 )
+texture = ExtResource( 4 )
+
+[node name="Revolver" type="Sprite" parent="revolver"]
+position = Vector2( 20.3773, -28.1132 )
+rotation = -1.5708
+scale = Vector2( 0.0444769, 0.0457606 )
+texture = ExtResource( 5 )
+offset = Vector2( 421.281, -44.033 )
+
+[node name="disparo" type="Position2D" parent="revolver"]
+position = Vector2( 19.545, -89.9689 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="revolver"]
+playback_speed = 5.0
+anims/fire = SubResource( 2 )
+
+[node name="Chapel de cima" type="Sprite" parent="."]
+position = Vector2( -3.39893, 8.83038 )
+rotation = 1.5708
+scale = Vector2( 0.377079, 0.385635 )
+texture = ExtResource( 8 )
