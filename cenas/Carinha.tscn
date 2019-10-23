@@ -68,6 +68,7 @@ tracks/3/keys = {
 [node name="Carinha" type="KinematicBody2D"]
 position = Vector2( 0, 63.1044 )
 rotation = -0.940124
+z_index = 20
 collision_layer = 6
 script = ExtResource( 1 )
 arma = 2
@@ -104,13 +105,12 @@ texture = ExtResource( 4 )
 
 [node name="Revolver" type="Sprite" parent="revolver"]
 position = Vector2( 20.3773, -28.1132 )
-rotation = -1.5708
 scale = Vector2( 0.0444769, 0.0457606 )
 texture = ExtResource( 5 )
 offset = Vector2( 421.281, -44.033 )
 
 [node name="disparo" type="Position2D" parent="revolver"]
-position = Vector2( 19.545, -89.9689 )
+position = Vector2( 81.4724, -29.3196 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="revolver"]
 playback_speed = 5.0
