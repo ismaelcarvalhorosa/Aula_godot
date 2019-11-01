@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scripts/Carinha.gd" type="Script" id=1]
 [ext_resource path="res://cenas/revolver.gd" type="Script" id=2]
 [ext_resource path="res://img/armas/Espigarda cano curto cima.png" type="Texture" id=3]
-[ext_resource path="res://img/sprites/shotRed.png" type="Texture" id=4]
+[ext_resource path="res://img/sprites/shotLarge.png" type="Texture" id=4]
 [ext_resource path="res://img/armas/revolver ouro.png" type="Texture" id=5]
-[ext_resource path="res://img/sprites/shotLarge.png" type="Texture" id=6]
-[ext_resource path="res://img/sprites/shotOrange.png" type="Texture" id=7]
+[ext_resource path="res://img/sprites/shotOrange.png" type="Texture" id=6]
+[ext_resource path="res://img/sprites/shotRed.png" type="Texture" id=7]
 [ext_resource path="res://img/Chapel de cima.png" type="Texture" id=8]
+[ext_resource path="res://cenas/mira.tscn" type="PackedScene" id=9]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 35.9235
@@ -15,7 +16,6 @@ height = 38.2327
 
 [sub_resource type="Animation" id=2]
 length = 1.8
-step = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("fire:texture")
 tracks/0/interp = 1
@@ -26,7 +26,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1, 1.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 4 ) ]
+"values": [ ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 7 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("fire:position")
@@ -38,7 +38,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.5, 1, 1.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 20.2535, -96.6446 ), Vector2( 19.8964, -99.8184 ), Vector2( 20.1472, -103.511 ), Vector2( 20.0958, -110.148 ) ]
+"values": [ Vector2( 2.98039, -97.9032 ), Vector2( 2.50174, -99.1925 ), Vector2( 2.86319, -98.8477 ), Vector2( 2.04623, -100.962 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("fire:scale")
@@ -59,15 +59,26 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 1.2, 1.8 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 1.2, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("fire:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
 }
 
 [node name="Carinha" type="KinematicBody2D"]
-position = Vector2( 0, 63.1044 )
-rotation = -0.940124
+position = Vector2( -1.90002, -8.14574 )
 z_index = 20
 collision_layer = 6
 script = ExtResource( 1 )
@@ -97,20 +108,21 @@ scale = Vector2( 0.046713, 0.046713 )
 texture = ExtResource( 3 )
 
 [node name="fire" type="Sprite" parent="revolver"]
-modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 20.0958, -110.148 )
+visible = false
+position = Vector2( 2.98039, -97.9032 )
 rotation = 3.14159
-scale = Vector2( 0.253657, 0.393091 )
+scale = Vector2( 0.993357, 1.13037 )
 texture = ExtResource( 4 )
 
 [node name="Revolver" type="Sprite" parent="revolver"]
-position = Vector2( 20.3773, -28.1132 )
+position = Vector2( 3.76117, -27.1897 )
+rotation = -1.58825
 scale = Vector2( 0.0444769, 0.0457606 )
 texture = ExtResource( 5 )
 offset = Vector2( 421.281, -44.033 )
 
 [node name="disparo" type="Position2D" parent="revolver"]
-position = Vector2( 81.4724, -29.3196 )
+position = Vector2( 2.44499, -89.0188 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="revolver"]
 playback_speed = 5.0
@@ -121,3 +133,6 @@ position = Vector2( -3.39893, 8.83038 )
 rotation = 1.5708
 scale = Vector2( 0.377079, 0.385635 )
 texture = ExtResource( 8 )
+
+[node name="mira" parent="." instance=ExtResource( 9 )]
+position = Vector2( 173.463, 20.4415 )

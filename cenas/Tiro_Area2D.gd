@@ -1,6 +1,6 @@
 extends Area2D
 
-const MAX_DIST = 300
+const MAX_DIST = 1050
 
 var vel = 700
 
@@ -23,7 +23,6 @@ func _process(delta):
 
 # Mostra se o objeto saiu da tela 
 func _on_VisibilityNotifier2D_screen_exited():
-	print("queue_free")
 	queue_free() #Apaga o obijeto da memoria quanto esta seguro  
 	
 	pass # Replace with function body.
